@@ -41,6 +41,7 @@ export const getPost = async(req, res) => {
     const id  = req.params.id;
     try{
         const post = await PostModel.findById(id);
+        console.log(post);
         res.status(200).json(post);
     }catch(err) {
         res.status(200).json(err);
