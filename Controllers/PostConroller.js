@@ -30,6 +30,8 @@ export const getAllPosts = async (req, res) => {
     try {
         const posts = await PostModel.find();
         res.status(200).json(posts);
+        //must delete
+        console.log(posts);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -42,6 +44,8 @@ export const getPost = async(req, res) => {
     try{
         const post = await PostModel.findById(id);
         res.status(200).json(post);
+        //must delete
+        console.log(post);
     }catch(err) {
         res.status(200).json(err);
     }
