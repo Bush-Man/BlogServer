@@ -17,7 +17,7 @@ export const createPost = async (req, res) => {
         });
         
         const savedPost = await post.save();
-        res.status(200).json(savedPost);
+        res.status(200).json({data:savedPost});
     } catch (err) {
         res.status(500).json(err);
     }
@@ -29,9 +29,8 @@ export const createPost = async (req, res) => {
 export const getAllPosts = async (req, res) => {
     try {
         const posts = await PostModel.find();
-        res.status(200).json(posts);
-        //must delete
-        console.log(posts);
+        res.status(200).json({data:posts});
+        
     } catch (err) {
         res.status(500).json(err);
     }
@@ -43,9 +42,8 @@ export const getPost = async(req, res) => {
     const id  = req.params.id;
     try{
         const post = await PostModel.findById(id);
-        res.status(200).json(post);
-        //must delete
-        console.log(post);
+        res.status(200).json({data:post});
+        
     }catch(err) {
         res.status(200).json(err);
     }
@@ -56,7 +54,7 @@ export const updatePost = async (req, res) => {
     const id = req.params.id;
     try {
         const updatedPost = await PostModel.findByIdAndUpdate(id,{ $set: req.body },{new:true});
-        res.status(200).json(updatedPost);
+        res.status(200).json({data:updatedPost});
     } catch (err) {
         res.status(500).json(err);
     }
