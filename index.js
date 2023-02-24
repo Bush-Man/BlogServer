@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import AuthRoute from "./Routes/AuthRoute.js";
 import PostRoute from "./Routes/PostRoute.js";
-
+import helmet from "helmet";
 
 const app = express();
 
@@ -13,7 +13,11 @@ dotenv.config();
 
 //middlewares
 app.use(cors());
-
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 mongoose.connect(process.env.MONGO_URL, {
