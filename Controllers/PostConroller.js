@@ -29,7 +29,7 @@ export const createPost = async (req, res) => {
 export const getAllPosts = async (req, res) => {
     try {
         const posts = await PostModel.find();
-        res.status(200).json({data:posts});
+        res.status(200).json(posts);
         
     } catch (err) {
         res.status(500).json(err);
@@ -42,7 +42,7 @@ export const getPost = async(req, res) => {
     const id  = req.params.id;
     try{
         const post = await PostModel.findById(id);
-        res.status(200).json({data:post});
+        res.status(200).json(post);
         
     }catch(err) {
         res.status(200).json(err);
@@ -54,7 +54,7 @@ export const updatePost = async (req, res) => {
     const id = req.params.id;
     try {
         const updatedPost = await PostModel.findByIdAndUpdate(id,{ $set: req.body },{new:true});
-        res.status(200).json({data:updatedPost});
+        res.status(200).json(updatedPost);
     } catch (err) {
         res.status(500).json(err);
     }
