@@ -17,7 +17,7 @@ export const createPost = async (req, res) => {
         });
         
         const savedPost = await post.save();
-        res.status(200).json({data:savedPost});
+        res.status(200).json(savedPost);
     } catch (err) {
         res.status(500).json(err);
     }
